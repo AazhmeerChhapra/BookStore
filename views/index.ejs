@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item List</title>
+</head>
+<body>
+    <h1>Item List</h1>
+    <a href="/signup">sign up</a>
+    <a href="/form">Add new item</a>
+    <ul>
+        <% items.forEach(item => { %>
+            <li>
+                <strong><%= item.name %></strong>: <%= item.description %> (Quantity: <%= item.quantity %>) (Price: <%= item.price %> )
+                <form action="/items/update/<%= item._id %>" method="POST">
+                    <input type="text" name="name" value="<%= item.name %>" />
+                    <input type="text" name="description" value="<%= item.description %>" />
+                    <input type="text" name="quantity" value="<%= item.quantity %>" />
+                    <input type="text" name="price" value="<%= item.price %>" />
+                    <button type="submit">Update</button>
+                </form>
+                <form action="/items/delete/<%= item._id %>" method="Delete">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
